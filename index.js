@@ -25,7 +25,11 @@ app.get("/search/:rut", async (req, res) => {
   let rut = req.params.rut;
   try {
     const student = await searchStudent(rut);
-    res.json(student.rows);
+    if (student.rows){
+      res.json(student.rows);
+    } else {
+      res.send(student[0])
+    }
   } catch (error) {
     res.status(500).send(error.message);
   }

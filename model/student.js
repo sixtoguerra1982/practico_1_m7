@@ -28,7 +28,7 @@ const searchStudent = async (rut) => {
     };
     const result = await pool.query(query);
     console.log(`Busqueda de estudiante: ${rut}`, result);
-    if (result.length > 0) {
+    if (result.rows.length > 0) {
       return result;
     } else {
       return [{ message: `Busqueda de estudiante: ${rut} ,no encontrado` }];
